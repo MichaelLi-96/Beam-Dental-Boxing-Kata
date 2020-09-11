@@ -15,7 +15,6 @@ class Button extends Component {
     }
 
     render() {
-        console.log(this.props.type + " " + this.props.activeType);
         return(
             <div className={this.getButton()} onClick={this.props.onClick}>
                 <div className="button-title">{this.props.title}</div>

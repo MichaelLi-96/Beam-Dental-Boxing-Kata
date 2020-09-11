@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 //css
 import "./App.css";
@@ -12,8 +13,21 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeBoxDisplay: "starter",
+            dataIsLoading: true,
+            data: [],
+            activeBoxDisplay: "starter"
         }
+    }
+
+    componentDidMount() { 
+        axios.get("https://beamtech.github.io/boxing-kata-js/perks.json")
+        .then((response) => {
+            this.setState({ data: response.data, dataIsLoading: false });
+            console.log(this.state.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     render() {
