@@ -5,7 +5,7 @@ import "./styles.css";
 
 class Button extends Component {
     
-    getClassName = () => {
+    getButton = () => {
         if(this.props.type === this.props.activeType) {
             return "button-active";
         }
@@ -17,7 +17,7 @@ class Button extends Component {
     render() {
         console.log(this.props.type + " " + this.props.activeType);
         return(
-            <div className={this.getClassName()} onClick={this.props.onClick}>
+            <div className={this.getButton()} onClick={this.props.onClick}>
                 <div className="button-title">{this.props.title}</div>
             </div>
         );

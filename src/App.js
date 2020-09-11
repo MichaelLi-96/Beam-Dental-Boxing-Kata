@@ -26,10 +26,10 @@ class App extends Component {
                 </div>
                 <Summary activeType={this.state.activeBoxDisplay} />
                 <div id="app-card-container">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <Card color="blue" brushes="2" replacementHeads="2" />
+                    <Card color="green" brushes="2" replacementHeads="2" />
+                    <Card color="pink" brushes="2" replacementHeads="2" />
+                    <Card color="blue" brushes="2" replacementHeads="2" />
                 </div>
             </div>
         );

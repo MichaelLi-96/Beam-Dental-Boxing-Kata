@@ -6,12 +6,21 @@ import "./styles.css";
 class Summary extends Component {
     render() {
         return(
-            <div className="summary">
-                {}
-                <div>Summary:</div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div id="summary">
+                <div id="summary-title">Summary:</div>
+                { this.props.activeType === "starter" ? (
+                    <div id="summary-info">
+                        <div>Starter Boxes: 3</div>
+                        <div>Brushes: 5</div>
+                        <div>Replacement Heads: 5</div>
+                    </div>
+                ) : (
+                    <div id="summary-info">
+                        <div>Refill Boxes: 2</div>
+                        <div>Replacement Heads: 5</div>
+                    </div>
+                )}
+
             </div>
         );
     }

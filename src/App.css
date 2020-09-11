@@ -1,6 +1,7 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
     margin: 0px;
+    letter-spacing: -1px;
 }
 
 #app {
@@ -10,12 +11,13 @@ body {
 	height: 100vh;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 30vw;
+	padding-right: 30vw;
 }
 
 #app-title {
-	font-size: 50px;
-	font-weight: bold;
-	margin-left: 20px;
+	font-size: 72px;
+	font-weight: 700;
 	color: #5B5B5B;
 	margin-bottom: 25px;
 }
@@ -24,9 +26,12 @@ body {
 	display: flex;
 	justify-content: start;
 	align-items: center;
-	-webkit-box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
-	-moz-box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
-	box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: #c6c6c6;
+
 }
 
 #app-card-container {
