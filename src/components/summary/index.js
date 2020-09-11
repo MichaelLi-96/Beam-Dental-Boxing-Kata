@@ -10,14 +10,14 @@ class Summary extends Component {
                 <div id="summary-title">Summary:</div>
                 { this.props.activeType === "starter" ? (
                     <div id="summary-info">
-                        <div>Starter Boxes: 3</div>
-                        <div>Brushes: 5</div>
-                        <div>Replacement Heads: 5</div>
+                        <div>Starter Boxes: {this.props.starterBoxesCount}</div>
+                        <div>Brushes: {this.props.starterBrushesCount}</div>
+                        <div>Replacement Heads: {this.props.starterReplacementHeadsCount}</div>
                     </div>
                 ) : (
                     <div id="summary-info">
-                        <div>Refill Boxes: 2</div>
-                        <div>Replacement Heads: 5</div>
+                        <div>Refill Boxes: {this.props.refillBoxesCount}</div>
+                        <div>Replacement Heads: {this.props.refillReplacementHeadsCount}</div>
                     </div>
                 )}
 

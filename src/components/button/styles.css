@@ -3,6 +3,7 @@
 	cursor: pointer;
 	background-color: #F7F7F7;
 	border-radius: 5px;
+	pointer-events: none;
 }
 
 .button-unactive {

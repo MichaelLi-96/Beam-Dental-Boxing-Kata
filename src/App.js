@@ -14,9 +14,14 @@ class App extends Component {
         super(props);
         this.state = {
             dataIsLoading: true,
-            data: [],
+            family: [],
             unableToFetchData: false,
-            activeBoxDisplay: "starter"
+            activeBoxDisplay: "starter",
+            starterBoxesCount: 0,
+            starterBrushesCount: 0,
+            starterReplacementHeadsCount: 0,
+            refillBoxesCount: 0,
+            refillReplacementHeadsCount: 0,
         }
     }
 
@@ -24,19 +29,51 @@ class App extends Component {
         this.fetchData();
     }
 
-    componentDidUpdate() {
-        this.fetchData();
+    componentDidUpdate(previousProps, previousState) {
+        if (previousState.activeBoxDisplay !== this.state.activeBoxDisplay) {
+            this.fetchData();
+        }
     }
 
     fetchData = () => {
         axios.get("https://beamtech.github.io/boxing-kata-js/perks.json")
         .then((response) => {
-            setTimeout(() => this.setState({ data: response.data, dataIsLoading: false }) , 1000);
-            console.log(this.state.data);
+            this.setState({ family: response.data, dataIsLoading: false });
+            this.renderSummary();
         })
         .catch((error) => { 
             this.setState({ unableToFetchData: true })
         });
+    }
+
+    renderSummary = () => {
+        const familyMemberCount = this.state.family.length;
+        
+        const starterBoxesCount = Math.ceil(familyMemberCount / 2);
+        const starterBrushesCount = familyMemberCount;
+        const starterReplacementHeadsCount = familyMemberCount;
+        const refillBoxesCount = Math.ceil(familyMemberCount / 4);
+        const refillReplacementHeadsCount = familyMemberCount;
+
+        this.setState({ 
+            starterBoxesCount: starterBoxesCount, 
+            starterBrushesCount: starterBrushesCount, 
+            starterReplacementHeadsCount: starterReplacementHeadsCount, 
+            refillBoxesCount: refillBoxesCount, 
+            refillReplacementHeadsCount: refillReplacementHeadsCount
+        });
+    }
+
+    renderCards = () => {
+        const colorCount = {
+            "blue": 0,
+            "green": 0,
+            "pink": 0
+        };
+        for(const familyMember of this.state.family) {
+            const brushColor = familyMember.brush_color;
+            colorCount[brushColor] = colorCount[brushColor] + 1;
+        }
     }
 
     render() {
@@ -57,7 +94,15 @@ class App extends Component {
                     </div>
                 ) : (
                     <div id="app-box-info-container">
-                        <Summary activeType={this.state.activeBoxDisplay} />
+                        <Summary 
+                            activeType={this.state.activeBoxDisplay} 
+                            starterBoxesCount={this.state.starterBoxesCount}
+                            starterBrushesCount={this.state.starterBrushesCount}
+                            starterReplacementHeadsCount={this.state.starterReplacementHeadsCount}
+                            refillBoxesCount={this.state.refillBoxesCount}
+                            refillReplacementHeadsCount={this.state.refillReplacementHeadsCount}
+
+                        />
                         <div id="app-card-container">
                             <Card color="blue" brushes="2" replacementHeads="2" />
                             <Card color="green" brushes="2" replacementHeads="2" />
