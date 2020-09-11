@@ -1,0 +1,39 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+    margin: 0px;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+	background-color: #DEDEDE;
+	height: 100vh;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#app-title {
+	font-size: 50px;
+	font-weight: bold;
+	margin-left: 20px;
+	color: #5B5B5B;
+	margin-bottom: 25px;
+}
+
+#app-button-container {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	-webkit-box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
+	-moz-box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
+	box-shadow: 0px 20px 20px 0px rgba(198, 198, 198,0.35);
+}
+
+#app-card-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+

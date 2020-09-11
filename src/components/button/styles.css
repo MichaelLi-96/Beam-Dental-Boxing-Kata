@@ -1,0 +1,16 @@
+.button-active {
+	padding: 15px;
+	cursor: pointer;
+	background-color: #F7F7F7;
+	border-radius: 5px;
+}
+
+.button-unactive {
+	padding: 15px;
+	cursor: pointer;
+}
+
+.button-title {
+	font-size: 36px;
+	color: #06C8F0;
+}
