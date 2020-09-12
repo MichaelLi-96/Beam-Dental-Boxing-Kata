@@ -12,6 +12,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .card-row {
@@ -49,4 +51,46 @@
 	border-radius: 50%;
 	background-color: #e92fac;
 	margin-right: 15px;
+}
+
+.card-blueGreen {
+    border-radius: 50%;
+    border-right-color: #01c4e9;
+    border-top-color: #e0e900;
+    border-bottom-color: #01c4e9;
+    border-left-color: #e0e900;
+    border-width: 15px;
+    border-style: solid;
+    height: 0px;
+    width: 0px;
+  	transform: rotate(-45deg);
+  	margin-right: 15px;
+}
+
+.card-bluePink {
+    border-radius: 50%;
+    border-right-color: #01c4e9;
+    border-top-color: #e92fac;
+    border-bottom-color: #01c4e9;
+    border-left-color: #e92fac;
+    border-width: 15px;
+    border-style: solid;
+    height: 0px;
+    width: 0px;
+  	transform: rotate(-45deg);
+  	margin-right: 15px;
+}
+
+.card-greenPink {
+    border-radius: 50%;
+    border-right-color: #e0e900;
+    border-top-color: #e92fac;
+    border-bottom-color: #e0e900;
+    border-left-color: #e92fac;
+    border-width: 15px;
+    border-style: solid;
+    height: 0px;
+    width: 0px;
+  	transform: rotate(-45deg);
+  	margin-right: 15px;
 }

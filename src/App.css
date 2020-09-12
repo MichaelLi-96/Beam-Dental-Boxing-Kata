@@ -2,13 +2,14 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
     margin: 0px;
     letter-spacing: -1px;
+    background-color: #DEDEDE;
+    height: 100vh;
 }
 
 #app {
 	display: flex;
 	flex-direction: column;
-	background-color: #DEDEDE;
-	height: 100vh;
+	height: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 30vw;
