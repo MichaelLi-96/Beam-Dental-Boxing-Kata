@@ -45,5 +45,6 @@ The hardest problem that I faced was implementing the refill boxes, grouping by 
 3. Open up the command prompt and cd to the file directory.
 4. Type and enter **`npm install`** to install necessary dependencies.
 5. After the installation has completed, type and enter **`npm start`** to run the project on your local server.
+6. To run the tests using Jest, type and enter **`npm test`**.
 
 
