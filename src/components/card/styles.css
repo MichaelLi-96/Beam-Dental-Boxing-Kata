@@ -63,7 +63,7 @@
     border-style: solid;
     height: 0px;
     width: 0px;
-  	transform: rotate(-45deg);
+  	transform: rotate(-135deg);
   	margin-right: 15px;
 }
 
@@ -77,7 +77,7 @@
     border-style: solid;
     height: 0px;
     width: 0px;
-  	transform: rotate(-45deg);
+  	transform: rotate(-135deg);
   	margin-right: 15px;
 }
 
@@ -91,6 +91,6 @@
     border-style: solid;
     height: 0px;
     width: 0px;
-  	transform: rotate(-45deg);
+  	transform: rotate(135deg);
   	margin-right: 15px;
 }
