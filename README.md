@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Beam Dental Boxing Kata
 
-## Available Scripts
+Given a family's brush color preferences, the application will generate a description of how the boxes should be filled. The focus of this kata should be building a website to handle perks.
 
-In the project directory, you can run:
+### Functionality
+* Upon entering the shipping screen, the starter box summary and cards should be displayed as default.
+* Has two tabs for generating and displaying starter boxes and refill boxes. One tab will be enabled (clickable) and the other tab will be disabled (unclickable) at all times.
+* Application attempts to fetch data everytime a user switches tabs.
+* While in the process of fetching data from the JSON endpoint, displays a loading spinner instead of box summary and box cards.
+* If the JSON endpoint call fails, displays an error message of "**Error:  Could not receive family preferences**" instead of box summary and box cards.
+* Displays starter and refill boxes, grouped by colors when possible.
+* A starter box can contain a maximum of 2 brushes and 2 replacement heads in any combination of colors.
+* A refill box can contain a maximum of 4 replacement heads in any combination of colors.
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Design Choices and Style
+I tried to stay true to the given lo-fi wireframes and have similar color palletes. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Color Pallete
 
-### `yarn test`
+| Color          | Hex                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| Black          | ![#000000](https://via.placeholder.com/10/000000?text=+) `#000000` |
+| Dark Grey      | ![#5B5B5B](https://via.placeholder.com/10/5B5B5B?text=+) `#5B5B5B` |
+| Grey           | ![#DEDEDE](https://via.placeholder.com/10/DEDEDE?text=+) `#DEDEDE` |
+| White          | ![#F7F7F7](https://via.placeholder.com/10/F7F7F7?text=+) `#F7F7F7` |
+| Blue           | ![#01C4E9](https://via.placeholder.com/10/01C4E9?text=+) `#01C4E9` |
+| Green          | ![#E0E900](https://via.placeholder.com/10/E0E900?text=+) `#E0E900` |
+| Pink           | ![#E92FAC](https://via.placeholder.com/10/E92FAC?text=+) `#E92FAC` |
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Packages/Libraries Used
+* **Axios**: Used to retrieve family data from the given [JSON endpoint](https://beamtech.github.io/boxing-kata-js/perks.json).
+* **Jest**: Used to create test cases for the getSummaryData, getStarterCardsData, and getRefillCardsData functions.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technical Thought Process
+My initial thought while reading this project description was that it could be implemented in React, a front end framework I am comfortable in. A feature of React is the ability to create components and connect them together. I immediately saw that the tab buttons, boxes summary, and box cards could all be made into components. These components will then be imported by the parent App.js file and will be manipulated to create the application. When creating the tab buttons, I created a state named "activeBoxDisplay" to hold the current tab that is clicked, either "starter" or "refill." Depending on the current state of the "activeBoxDisplay", the application will render the respective summary and box cards. I used the Axios package to retrieve the family data from the JSON endpoint. If the JSON endpoint previously fails, I thought that switching tabs should make another call to the endpoint just in case the endpoint starts working again so I made that into a feature. I then created 3 functions(getSummaryData, getStarterCardsData, and getRefillCardsData) to take in the family data and return JSON objects of what should be rendered in the HTML. I did not directly render in the HTML through the function and wanted to return JSON objects in order for the functions to be testable. Finally, I used Jest to create and run custom test inputs and outputs upon my functions.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### How to run the project
+1. Make sure you have [Node.js](https://nodejs.org/en/) installed on your computer.
+2. Clone the repo and save it to desired file directory.
+3. Open up the command prompt and cd to the file directory.
+4. Type and enter **`npm install`** to install necessary dependencies.
+5. After the installation has completed, type and enter **`npm start`** to run the project on your local server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
