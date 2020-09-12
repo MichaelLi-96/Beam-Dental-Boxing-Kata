@@ -76,13 +76,13 @@ class App extends Component {
         });
     }
 
-    renderStarterCards = () => {
+    getStarterCardsData = (familyData) => {
         const colorCount = {
             "blue": 0,
             "green": 0,
             "pink": 0
         };
-        for(let familyMember of this.state.family) {
+        for(let familyMember of familyData) {
             let brushColor = familyMember.brush_color;
             colorCount[brushColor] = colorCount[brushColor] + 1;
         }
@@ -97,14 +97,14 @@ class App extends Component {
 
             while(count - 2 >= 0) {
                 cards.push(
-                    <Card 
-                        key={key} 
-                        colorOne={color} 
-                        colorTwo="none" 
-                        activeType={this.state.activeBoxDisplay} 
-                        brushesCount={2} 
-                        replacementHeadsCount={2} 
-                    />
+                    {
+                        "key": key,
+                        "colorOne": color,
+                        "colorTwo": "none",
+                        "activeType": this.state.activeBoxDisplay,
+                        "brushesCount": 2,
+                        "replacementHeadsCount": 2
+                    }
                 );
                 key = key + 1;
                 count = count - 2;
@@ -114,14 +114,14 @@ class App extends Component {
                 remainderColors.push(color);
                 if(remainderColors.length === 2) {
                     cards.push(
-                        <Card 
-                            key={key} 
-                            colorOne={remainderColors[0]} 
-                            colorTwo={remainderColors[1]} 
-                            activeType={this.state.activeBoxDisplay} 
-                            brushesCount={2} 
-                            replacementHeadsCount={2} 
-                        />
+                        {
+                            "key": key,
+                            "colorOne": remainderColors[0],
+                            "colorTwo": remainderColors[1],
+                            "activeType": this.state.activeBoxDisplay,
+                            "brushesCount": 2,
+                            "replacementHeadsCount": 2
+                        }
                     );
                     key = key + 1;
                     remainderColors = [];
@@ -131,19 +131,36 @@ class App extends Component {
 
         if(remainderColors.length === 1) {
             cards.push(
-                <Card 
-                    key={key} 
-                    colorOne={remainderColors[0]} 
-                    colorTwo="none" 
-                    activeType={this.state.activeBoxDisplay} 
-                    brushesCount={1} 
-                    replacementHeadsCount={1} 
-                />
+               {
+                    "key": key,
+                    "colorOne": remainderColors[0],
+                    "colorTwo": "none",
+                    "activeType": this.state.activeBoxDisplay,
+                    "brushesCount": 1,
+                    "replacementHeadsCount": 1
+                }
             );
-            key = key + 1;      
-            remainderColors = [];  
         }
 
+        return cards;
+    }
+
+    renderStarterCards = () => {
+        let cards = [];
+        let starterCardsData = this.getStarterCardsData(this.state.family);
+        console.log(starterCardsData);
+        for(let card of starterCardsData) {
+            cards.push(
+                <Card
+                    key={card.key}
+                    colorOne={card.colorOne}
+                    colorTwo={card.colorTwo}
+                    activeType={card.activeType}
+                    brushesCount={card.brushesCount}
+                    replacementHeadsCount={card.replacementHeadsCount}
+                />
+            );
+        }
         return cards;
     }
 
