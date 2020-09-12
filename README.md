@@ -1,4 +1,4 @@
-## Beam Dental Boxing Kata
+# Beam Dental Boxing Kata
 
 Given a family's brush color preferences, the application will generate a description of how the boxes should be filled. The focus of this kata should be building a website to handle perks.
 
