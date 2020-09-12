@@ -100,7 +100,7 @@ class App extends Component {
                     {
                         "key": key,
                         "colorOne": color,
-                        "colorTwo": "none",
+                        "colorTwo": "",
                         "activeType": this.state.activeBoxDisplay,
                         "brushesCount": 2,
                         "replacementHeadsCount": 2
@@ -134,7 +134,7 @@ class App extends Component {
                {
                     "key": key,
                     "colorOne": remainderColors[0],
-                    "colorTwo": "none",
+                    "colorTwo": "",
                     "activeType": this.state.activeBoxDisplay,
                     "brushesCount": 1,
                     "replacementHeadsCount": 1
@@ -148,7 +148,6 @@ class App extends Component {
     renderStarterCards = () => {
         let cards = [];
         let starterCardsData = this.getStarterCardsData(this.state.family);
-        console.log(starterCardsData);
         for(let card of starterCardsData) {
             cards.push(
                 <Card
@@ -164,13 +163,13 @@ class App extends Component {
         return cards;
     }
 
-    renderRefillCards = () => {
+    getRefillCardsData = (familyData) => {
         const colorCount = {
             "blue": 0,
             "green": 0,
             "pink": 0
         };
-        for(let familyMember of this.state.family) {
+        for(let familyMember of familyData) {
             let brushColor = familyMember.brush_color;
             colorCount[brushColor] = colorCount[brushColor] + 1;
         }
@@ -184,13 +183,17 @@ class App extends Component {
 
             while(count - 4 >= 0) {
                 cards.push(
-                    <Card 
-                        key={key} 
-                        activeType={this.state.activeBoxDisplay} 
-                        colorCount={1} 
-                        firstRowColor={color} 
-                        firstRowReplacementHeadsCount={4} 
-                    />
+                    {
+                        "key": key,
+                        "activeType": this.state.activeBoxDisplay,
+                        "colorCount": 1,
+                        "firstRowColor": color,
+                        "firstRowReplacementHeadsCount": 4,
+                        "secondRowColor": "",
+                        "secondRowReplacementHeadsCount": 0,
+                        "thirdRowColor": "",
+                        "thirdRowReplacementHeadsCount": 0
+                    }
                 );
                 key = key + 1;
                 count = count - 4;
@@ -225,15 +228,17 @@ class App extends Component {
                     let secondRowColor = remainderColors[i].color;
                     let secondRowReplacementHeads = remainderColors[i].count;
                     cards.push(
-                        <Card 
-                            key={key} 
-                            activeType={this.state.activeBoxDisplay} 
-                            colorCount={2}
-                            firstRowColor={firstRowColor} 
-                            firstRowReplacementHeadsCount={firstRowReplacementHeads} 
-                            secondRowColor={secondRowColor} 
-                            secondRowReplacementHeadsCount={secondRowReplacementHeads} 
-                        />
+                        {
+                            "key": key,
+                            "activeType": this.state.activeBoxDisplay,
+                            "colorCount": 2,
+                            "firstRowColor": firstRowColor,
+                            "firstRowReplacementHeadsCount": firstRowReplacementHeads,
+                            "secondRowColor": secondRowColor,
+                            "secondRowReplacementHeadsCount": secondRowReplacementHeads,
+                            "thirdRowColor": "",
+                            "thirdRowReplacementHeadsCount": 0
+                        }
                     );
                     key = key + 1;
                     remainderColors.splice(i, 1);
@@ -247,13 +252,17 @@ class App extends Component {
 
             if(remainderColors.length === 0) {
                 cards.push(
-                    <Card 
-                        key={key} 
-                        activeType={this.state.activeBoxDisplay} 
-                        colorCount={1} 
-                        firstRowColor={firstRowColor} 
-                        firstRowReplacementHeadsCount={firstRowReplacementHeads} 
-                    />
+                    {
+                        "key": key,
+                        "activeType": this.state.activeBoxDisplay,
+                        "colorCount": 1,
+                        "firstRowColor": firstRowColor,
+                        "firstRowReplacementHeadsCount": firstRowReplacementHeads,
+                        "secondRowColor": "",
+                        "secondRowReplacementHeadsCount": 0,
+                        "thirdRowColor": "",
+                        "thirdRowReplacementHeadsCount": 0
+                    }
                 );
             }
             else {
@@ -288,15 +297,17 @@ class App extends Component {
                     let secondRowColor = secondRow.color;
                     let secondRowReplacementHeads = secondRow.count;
                     cards.push(
-                        <Card 
-                            key={key} 
-                            activeType={this.state.activeBoxDisplay} 
-                            colorCount={2}
-                            firstRowColor={firstRowColor} 
-                            firstRowReplacementHeadsCount={firstRowReplacementHeads} 
-                            secondRowColor={secondRowColor} 
-                            secondRowReplacementHeadsCount={secondRowReplacementHeads} 
-                        />
+                        {
+                            "key": key,
+                            "activeType": this.state.activeBoxDisplay,
+                            "colorCount": 2,
+                            "firstRowColor": firstRowColor,
+                            "firstRowReplacementHeadsCount": firstRowReplacementHeads,
+                            "secondRowColor": secondRowColor,
+                            "secondRowReplacementHeadsCount": secondRowReplacementHeads,
+                            "thirdRowColor": "",
+                            "thirdRowReplacementHeadsCount": 0
+                        }
                     );
                 }
                 else if(rows.length === 2){
@@ -307,22 +318,43 @@ class App extends Component {
                     let thirdRowColor = thirdRow.color;
                     let thirdRowReplacementHeads = thirdRow.count;
                     cards.push(
-                        <Card 
-                            key={key} 
-                            activeType={this.state.activeBoxDisplay} 
-                            colorCount={3}
-                            firstRowColor={firstRowColor} 
-                            firstRowReplacementHeadsCount={firstRowReplacementHeads} 
-                            secondRowColor={secondRowColor} 
-                            secondRowReplacementHeadsCount={secondRowReplacementHeads} 
-                            thirdRowColor={thirdRowColor} 
-                            thirdRowReplacementHeadsCount={thirdRowReplacementHeads} 
-                        />
+                        {
+                            "key": key,
+                            "activeType": this.state.activeBoxDisplay,
+                            "colorCount": 3,
+                            "firstRowColor": firstRowColor,
+                            "firstRowReplacementHeadsCount": firstRowReplacementHeads,
+                            "secondRowColor": secondRowColor,
+                            "secondRowReplacementHeadsCount": secondRowReplacementHeads,
+                            "thirdRowColor": thirdRowColor,
+                            "thirdRowReplacementHeadsCount": thirdRowReplacementHeads
+                        }
                     );
                 }
             }
         }
 
+        return cards;
+    }
+
+    renderRefillCards = () => {
+        let cards = [];
+        let refillCardsData = this.getRefillCardsData(this.state.family);
+        for(let card of refillCardsData) {
+            cards.push(
+                <Card
+                    key= {card.key}
+                    activeType= {card.activeType}
+                    colorCount= {card.colorCount}
+                    firstRowColor= {card.firstRowColor}
+                    firstRowReplacementHeadsCount= {card.firstRowReplacementHeadsCount}
+                    secondRowColor= {card.secondRowColor}
+                    secondRowReplacementHeadsCount= {card.secondRowReplacementHeadsCount}
+                    thirdRowColor= {card.thirdRowColor}
+                    thirdRowReplacementHeadsCount= {card.thirdRowReplacementHeadsCount}
+                />
+            );
+        }
         return cards;
     }
 

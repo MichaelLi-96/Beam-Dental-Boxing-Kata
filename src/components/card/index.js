@@ -10,7 +10,7 @@ class Card extends Component {
             colorTwo
         } = this.props;
 
-        if(colorTwo === "none") {
+        if(colorTwo === "") {
             if(colorOne === "blue") {
                 return "card-blue";
             }
