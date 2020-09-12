@@ -46,8 +46,8 @@ class App extends Component {
         });
     }
 
-    renderSummary = () => {
-        const familyMemberCount = this.state.family.length;
+    getSummaryData = (familyData) => {
+        const familyMemberCount = familyData.length;
 
         const starterBoxesCount = Math.ceil(familyMemberCount / 2);
         const starterBrushesCount = familyMemberCount;
@@ -55,12 +55,24 @@ class App extends Component {
         const refillBoxesCount = Math.ceil(familyMemberCount / 4);
         const refillReplacementHeadsCount = familyMemberCount;
 
+        return {
+            "starterBoxesCount": starterBoxesCount,
+            "starterBrushesCount": starterBrushesCount,
+            "starterReplacementHeadsCount": starterReplacementHeadsCount,
+            "refillBoxesCount": refillBoxesCount,
+            "refillReplacementHeadsCount": refillReplacementHeadsCount
+        }
+    }
+
+    renderSummary = () => {
+       let summaryData = this.getSummaryData(this.state.family);
+
         this.setState({ 
-            starterBoxesCount: starterBoxesCount, 
-            starterBrushesCount: starterBrushesCount, 
-            starterReplacementHeadsCount: starterReplacementHeadsCount, 
-            refillBoxesCount: refillBoxesCount, 
-            refillReplacementHeadsCount: refillReplacementHeadsCount
+            starterBoxesCount: summaryData.starterBoxesCount, 
+            starterBrushesCount: summaryData.starterBrushesCount, 
+            starterReplacementHeadsCount: summaryData.starterReplacementHeadsCount, 
+            refillBoxesCount: summaryData.refillBoxesCount, 
+            refillReplacementHeadsCount: summaryData.refillReplacementHeadsCount
         });
     }
 
