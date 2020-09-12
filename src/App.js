@@ -264,6 +264,7 @@ class App extends Component {
                         "thirdRowReplacementHeadsCount": 0
                     }
                 );
+                key = key + 1;
             }
             else {
                 // only job is to fill up the card starting from the minimum count color
@@ -309,6 +310,7 @@ class App extends Component {
                             "thirdRowReplacementHeadsCount": 0
                         }
                     );
+                    key = key + 1;
                 }
                 else if(rows.length === 2){
                     let secondRow = rows[0];
@@ -330,6 +332,7 @@ class App extends Component {
                             "thirdRowReplacementHeadsCount": thirdRowReplacementHeads
                         }
                     );
+                    key = key + 1;
                 }
             }
         }

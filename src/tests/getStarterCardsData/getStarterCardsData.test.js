@@ -38,7 +38,7 @@ let test1 = [
 	}
 ];
 
-test('getStarterCardsData test 1', () => {
+test('getStarterCardsData test 1 (2b, 2g, 1p)', () => {
   expect(getStarterCardsData(test1)).toEqual([
   	 {
         "key": 0,
@@ -137,7 +137,7 @@ let test2 = [
 	}
 ];
 
-test('getStarterCardsData test 2', () => {
+test('getStarterCardsData test 2 (4b, 4g, 2p)', () => {
   expect(getStarterCardsData(test2)).toEqual([ 
   	{
         "key": 0,
@@ -208,7 +208,7 @@ let test3 = [
 	},
 ];
 
-test('getStarterCardsData test 3', () => {
+test('getStarterCardsData test 3 (2b, 1g, 1p)', () => {
   expect(getStarterCardsData(test3)).toEqual([ 
   	{
         "key": 0,
@@ -223,6 +223,112 @@ test('getStarterCardsData test 3', () => {
         "colorTwo": "pink",
         "brushesCount": 2,
         "replacementHeadsCount": 2
+    }
+    ]);
+});
+
+let test4 = [
+	{
+		"id": 2,
+		"name": "Anakin",
+		"brush_color": "blue",
+		"primary_insured_id": null,
+		"contract_effective_date": "2018-01-01"
+	},
+	{
+		"id": 3,
+		"name": "Padme",
+		"brush_color": "pink",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 4,
+		"name": "Luke",
+		"brush_color": "pink",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 5,
+		"name": "Leia",
+		"brush_color": "green",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 6,
+		"name": "Ben",
+		"brush_color": "green",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 7,
+		"name": "Anakin",
+		"brush_color": "blue",
+		"primary_insured_id": null,
+		"contract_effective_date": "2018-01-01"
+	},
+	{
+		"id": 8,
+		"name": "Padme",
+		"brush_color": "pink",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 9,
+		"name": "Luke",
+		"brush_color": "blue",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	},
+	{
+		"id": 10,
+		"name": "Leia",
+		"brush_color": "green",
+		"primary_insured_id": 2,
+		"contract_effective_date": ""
+	}
+];
+
+test('getStarterCardsData test 4 (3b, 3g, 3p)', () => {
+  expect(getStarterCardsData(test4)).toEqual([ 
+  	{
+        "key": 0,
+        "colorOne": "blue",
+        "colorTwo": "",
+        "brushesCount": 2,
+        "replacementHeadsCount": 2
+    },
+    {
+        "key": 1,
+        "colorOne": "green",
+        "colorTwo": "",
+        "brushesCount": 2,
+        "replacementHeadsCount": 2
+    },
+    {
+        "key": 2,
+        "colorOne": "blue",
+        "colorTwo": "green",
+        "brushesCount": 2,
+        "replacementHeadsCount": 2
+    },
+    {
+        "key": 3,
+        "colorOne": "pink",
+        "colorTwo": "",
+        "brushesCount": 2,
+        "replacementHeadsCount": 2
+    },
+    {
+        "key": 4,
+        "colorOne": "pink",
+        "colorTwo": "",
+        "brushesCount": 1,
+        "replacementHeadsCount": 1
     }
     ]);
 });
